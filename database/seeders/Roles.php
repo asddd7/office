@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class Roles extends Seeder
 {
@@ -17,8 +17,9 @@ class Roles extends Seeder
             'user',
         ];
 
-        foreach ($roles as $role) {
-            \App\Models\Role::create(['name' => $role]);
-        }
+        DB::table('roles')->upsert([
+            ['id' => 1, 'name' => $roles[0]],
+            ['id' => 2, 'name' => $roles[1]],
+        ], ['id'], ['name']);
     }
 }
