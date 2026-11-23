@@ -17,7 +17,7 @@
 <body>
 
 <div class="layout">
-
+    @include('layouts.partials.sidebar')
     <main class="content">
         @yield('content')
     </main>
