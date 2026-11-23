@@ -1,3 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+:root {
+    --primary-color: #305bd1;
+    --primary-color-hover: #244aa8;
+    --secondary-color: #f5f7fb;
+    --text-color: #1f2937;
+    --secondary-text-color: #ffffff;
+    --optional-text-color: #00b600;
+    --font-family: "Poppins", sans-serif;
+    --secondary-font-family: "Roboto", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+a,
+button,
+input {
+    font: inherit;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    flex: 1;
+    width: 100%;
+}
