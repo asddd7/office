@@ -4,7 +4,10 @@
         <span class="logo-full">SFA</span>
     </div>
     <div class="sidebar-section">MENU UTAMA</div>
-    <a href="{{ route('dashboard') }}" @class(['active' => request()->routeIs('dashboard')])>
+    <a
+        href="{{ route(auth()->user()?->role_id === 1 ? 'admin.dashboard' : 'dashboard') }}"
+        @class(['active' => request()->routeIs('dashboard', 'admin.dashboard')])
+    >
         <i class="fa-solid fa-house"></i><span>Dashboard</span>
     </a>
 </aside>

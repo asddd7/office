@@ -362,13 +362,13 @@ input {
 }
 
 .sidebar > a.active {
-    background: var(--sidebar-accent-soft);
-    color: var(--sidebar-accent);
+    background: var(--sidebar-accent);
+    color: #fff;
     font-weight: 700;
 }
 
 .sidebar > a.active i {
-    color: var(--sidebar-accent);
+    color: #fff;
 }
 
 .sidebar.collapsed {
