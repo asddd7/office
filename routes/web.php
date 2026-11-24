@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\Customer;
+use App\Http\Controllers\Admin\CustomerCategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,6 +31,7 @@ Route::get('customer/{customer}/edit', [Customer::class, 'edit'])->name('custome
 Route::put('customer/{customer}', [Customer::class, 'update'])->name('customer.update');
 Route::delete('customer/{customer}', [Customer::class, 'destroy'])->name('customer.destroy');
 
+Route::get('customer_category', [CustomerCategoryController::class, 'index'])->name('customer_category.index');
 });
 
 Route::middleware('auth')->group(function () {

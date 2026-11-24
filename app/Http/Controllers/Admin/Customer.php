@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Customer as ModelsCustomer;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
-use Illuminate\Http\Request;
 
 class Customer extends Controller
 {
@@ -19,15 +18,20 @@ class Customer extends Controller
             ->join('customer_category', 'customer.category_id', '=', 'customer_category.id')
             ->select('customer.*', 'customer_category.name as category_name')
             ->get();
+
         return view('admin.customer.index', compact('customers'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
-        //
+        $categories = DB::table('customer_category')
+            ->orderBy('name')
+            ->get();
+
+        return view('admin.customer.create', compact('categories'));
     }
 
     /**
