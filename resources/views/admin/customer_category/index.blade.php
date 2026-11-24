@@ -10,6 +10,10 @@
             <h1>Kategori Pelanggan</h1>
             <p class="customer-page-description">Kelola kategori pelanggan dalam aplikasi.</p>
         </div>
+            <a href="{{ route('admin.customer_category.create') }}" class="customer-add-button">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                <span>Tambah Kategori Pelanggan</span>
+            </a>
     </header>
     <section class="customer-category-table-card" aria-labelledby="customer-category-list-title">
         <div class="customer-category-table-heading">

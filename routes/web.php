@@ -32,6 +32,12 @@ Route::put('customer/{customer}', [Customer::class, 'update'])->name('customer.u
 Route::delete('customer/{customer}', [Customer::class, 'destroy'])->name('customer.destroy');
 
 Route::get('customer_category', [CustomerCategoryController::class, 'index'])->name('customer_category.index');
+Route::post('customer_category', [CustomerCategoryController::class, 'store'])->name('customer_category.store');
+Route::get('customer_category/create', [CustomerCategoryController::class, 'create'])->name('customer_category.create');
+Route::get('customer_category/{category}', [CustomerCategoryController::class, 'show'])->name('customer_category.show');
+Route::get('customer_category/{category}/edit', [CustomerCategoryController::class, 'edit'])->name('customer_category.edit');
+Route::put('customer_category/{category}', [CustomerCategoryController::class, 'update'])->name('customer_category.update');
+Route::delete('customer_category/{category}', [CustomerCategoryController::class, 'destroy'])->name('customer_category.destroy');
 });
 
 Route::middleware('auth')->group(function () {

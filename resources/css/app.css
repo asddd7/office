@@ -529,7 +529,8 @@ input {
     outline-offset: 2px;
 }
 
-.customer-table-card {
+.customer-table-card, 
+.customer-category-table-card {
     overflow: hidden;
     border: 1px solid #e8ecf3;
     border-radius: 14px;
@@ -537,7 +538,8 @@ input {
     box-shadow: 0 8px 24px rgb(23 37 84 / 4%);
 }
 
-.customer-table-heading {
+.customer-table-heading,
+.customer-category-table-heading {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -545,36 +547,43 @@ input {
     border-bottom: 1px solid #edf0f5;
 }
 
-.customer-table-heading h2 {
+.customer-table-heading h2, 
+.customer-category-table-heading h2 {
     margin: 0;
     color: #172554;
     font-size: 16px;
 }
 
-.customer-table-heading p {
+.customer-table-heading p, 
+.customer-category-table-heading p {
     margin: 5px 0 0;
     color: #8793a7;
     font-size: 12px;
 }
 
-.customer-table-wrapper {
+.customer-table-wrapper,
+.customer-category-table-wrapper {
     overflow-x: auto;
 }
 
-.customer-table {
+.customer-table,
+.customer-category-table {
     width: 100%;
     border-collapse: collapse;
     text-align: left;
 }
 
 .customer-table th,
-.customer-table td {
+.customer-table td,
+.customer-category-table th,
+.customer-category-table td {
     padding: 14px 18px;
     border-bottom: 1px solid #edf0f5;
     vertical-align: middle;
 }
 
-.customer-table th {
+.customer-table th,
+.customer-category-table th {
     background: #f8faff;
     color: #738098;
     font-size: 11px;
@@ -584,20 +593,24 @@ input {
     white-space: nowrap;
 }
 
-.customer-table td {
+.customer-table td,
+.customer-category-table td {
     color: #526078;
     font-size: 13px;
 }
 
-.customer-table tbody tr:last-child td {
+.customer-table tbody tr:last-child td,
+.customer-category-table tbody tr:last-child td {
     border-bottom: 0;
 }
 
-.customer-table tbody tr:hover {
+.customer-table tbody tr:hover,
+.customer-category-table tbody tr:hover {
     background: #fbfcff;
 }
 
-.customer-id {
+.customer-id,
+.customer-category-id {
     color: #8793a7 !important;
     font-variant-numeric: tabular-nums;
 }
