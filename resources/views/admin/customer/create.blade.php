@@ -3,11 +3,14 @@
 @section('title', 'Customer - SFA App')
 
 @section('content')
-<div class="content-header">
-    <h1 class="content-title">Tambah Pelanggan</h1>
-    <p class="content-description">Form untuk menambahkan pelanggan baru ke dalam sistem.</p>
-</div>
-<div class="content-body">
+<div class="customer-page">
+    <header class="customer-page-header">
+        <div>
+            <p class="customer-eyebrow">MANAJEMEN DATA</p>
+            <h1>Tambah Pelanggan</h1>
+            <p class="customer-page-description">Tambahkan informasi pelanggan baru ke dalam aplikasi.</p>
+        </div>
+    </header>
     <form action="{{ route('admin.customer.store') }}" method="POST" class="customer-form">
         @csrf
         <div class="form-group">
