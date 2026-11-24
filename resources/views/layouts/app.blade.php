@@ -17,7 +17,9 @@
 <body>
 
 <div class="layout">
-    @include('layouts.partials.sidebar')
+    @auth
+        @include('layouts.partials.sidebar')
+    @endauth
     <main class="content">
         @yield('content')
     </main>

@@ -26,8 +26,16 @@
             </div>
 
             <div class="btn-section">
-                <a href="{{ route('password.request') }}" class="forgot-password-link">Forgot your password?</a>
-                <a href="{{ route('register') }}" class="register-link">Don't have an account? Register</a>
+                <div class="auth-links">
+                    <p class="auth-link-item">
+                        Forgot your password?
+                        <a href="{{ route('password.request') }}" class="forgot-password-link">Reset</a>
+                    </p>
+                    <p class="auth-link-item">
+                        Don't have an account?
+                        <a href="{{ route('register') }}" class="register-link">Register</a>
+                    </p>
+                </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </div>
         </form>
