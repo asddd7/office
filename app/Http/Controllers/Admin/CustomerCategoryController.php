@@ -12,7 +12,8 @@ class CustomerCategoryController extends Controller
      */
     public function index()
     {
-        return view('admin.customer_category.index');
+        $categories = \DB::table('customer_category')->get();
+        return view('admin.customer_category.index', compact('categories'));
     }
 
     /**

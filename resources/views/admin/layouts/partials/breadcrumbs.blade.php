@@ -18,6 +18,22 @@
             }
         }
     }
+
+    if (request()->routeIs('admin.customer_category.*')) {
+        if (request()->routeIs('admin.customer_category.index')) {
+            $breadcrumbs[] = ['label' => 'Kategori Pelanggan', 'url' => null];
+        } else {
+            $breadcrumbs[] = ['label' => 'Kategori Pelanggan', 'url' => route('admin.customer_category.index')];
+
+            if (request()->routeIs('admin.customer_category.create')) {
+                $breadcrumbs[] = ['label' => 'Tambah Kategori Pelanggan', 'url' => null];
+            } elseif (request()->routeIs('admin.customer_category.edit')) {
+                $breadcrumbs[] = ['label' => 'Edit Kategori Pelanggan', 'url' => null];
+            } elseif (request()->routeIs('admin.customer_category.show')) {
+                $breadcrumbs[] = ['label' => 'Detail Kategori Pelanggan', 'url' => null];
+            }
+        }
+    }
 @endphp
 
 <nav class="admin-breadcrumbs" aria-label="Breadcrumb">
