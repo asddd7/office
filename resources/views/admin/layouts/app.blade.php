@@ -22,6 +22,7 @@
         @include('admin.layouts.partials.sidebar')
     @endauth
     <main class="content">
+        @include('admin.layouts.partials.breadcrumbs')
         @yield('content')
     </main>
 </div>

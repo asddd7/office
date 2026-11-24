@@ -421,6 +421,51 @@ input {
     pointer-events: auto;
 }
 
+.admin-breadcrumbs {
+    width: min(1180px, 100% - 48px);
+    margin: 16px auto 0;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: var(--primary-color);
+}
+
+.admin-breadcrumbs ol {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    list-style: none;
+}
+
+.admin-breadcrumbs li {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgb(255 255 255 / 78%);
+    font-size: 12px;
+}
+
+.admin-breadcrumbs li + li::before {
+    color: rgb(255 255 255 / 62%);
+    content: "/";
+}
+
+.admin-breadcrumbs a {
+    color: rgb(255 255 255 / 86%);
+    text-decoration: none;
+    transition: color .15s ease;
+}
+
+.admin-breadcrumbs a:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.admin-breadcrumbs [aria-current="page"] {
+    color: #fff;
+    font-weight: 700;
+}
+
 .customer-page {
     width: min(1180px, 100% - 48px);
     margin: 0 auto;
@@ -661,6 +706,231 @@ input {
     border: 0;
 }
 
+.breadcrumb-container {
+	--edge-offset: clamp(8px, 5cqw, 16px);
+	--gap: 6px;
+	
+	contain: breadcrumb-container / inline-size;		
+	
+	ol {
+		display: inline-flex;
+		flex-wrap: wrap;
+		gap: var(--gap);
+		
+		font-size: .85rem;
+		font-weight: 520;
+		list-style: none;
+	}
+	
+	
+	li.breadcrumb {	
+/* 		contain: breadcrumb / inline-size; */
+		
+		/* pull "finned" breadcrumbs to the left */
+		&:not(:first-of-type) {			
+			margin-left: calc(var(--edge-offset) * -1);  
+		}
+		
+		
+		/* default breadcrumb */
+		a {
+/* 			--breadcrumb-padding-inline: max-content; */
+/* 			--breadcrumb-padding-inline: min(min(16px, 10cqw), max(48px, 100cqw)); */
+			--breadcrumb-padding-inline: calc(1ch + 4cqw);
+			--breadcrumb-border-radius: 6px;
+			
+			background: var(--crumb-bg);
+			color: var(--crumb-fg);
+			
+			display: flex;
+			align-items: center;
+			
+/* 			padding-block: 1.8ex 2ex; */
+/* 			padding-block: calc(2.8ex + -.5cqw) calc(3ex  + -.5cqw); */
+			padding-block: calc(1.8ex + -2cqw) calc(2ex  + -2cqw);
+			min-height: 5ex;
+			max-height: 9ex;
+			padding-left: var(--breadcrumb-padding-left);
+			padding-right: var(--breadcrumb-padding-right);
+			
+			hyphens: auto;			
+			text-decoration: none;
+			user-select: none;
+			
+			transition-property: background, color;
+			transition-duration: .3s;
+			transition-timing-function: ease-out;
+			
+			span {
+				/* Needed for hyphens */
+/* 				text-transform: capitalize;  */
+			}
+			
+			&:hover {
+				--crumb-bg: var(--crumb-inactive-bg--hover);
+				--crumb-fg: var(--crumb-inactive-fg--hover);
+			}
+			
+			
+			/* first breadcrumb */
+			li:first-of-type & {
+				--breadcrumb-padding-left: var(--breadcrumb-padding-inline);
+				
+				border-top-left-radius: var(--breadcrumb-border-radius);
+				border-bottom-left-radius: var(--breadcrumb-border-radius);				
+			}
+			
+			
+			/* all book-ended crumbs */
+			li:not(:first-of-type, :last-of-type) & {
+/* 				--breadcrumb-padding-left: calc-size( var(--breadcrumb-padding-inline) + var(--edge-offset) ); */
+				--breadcrumb-padding-left: calc( var(--breadcrumb-padding-inline) + var(--edge-offset) );
+			}
+			
+			
+			/* last/active breadcrumb */
+			li[aria-current="page"] & {
+				--crumb-bg: var(--crumb-active-bg);
+				--crumb-fg: var(--crumb-active-fg);
+				
+/* 				--breadcrumb-padding-left: calc-size( var(--breadcrumb-padding-inline) + var(--edge-offset) ); */
+				--breadcrumb-padding-left: calc( var(--breadcrumb-padding-inline) + var(--edge-offset) );
+				--breadcrumb-padding-right: var(--breadcrumb-padding-inline);
+				
+				border-top-right-radius: var(--breadcrumb-border-radius);
+				border-bottom-right-radius: var(--breadcrumb-border-radius);
+				
+				font-weight: 700;
+
+				&:hover {
+					--crumb-bg: var(--crumb-active-bg--hover);
+					--crumb-fg: var(--crumb-active-fg--hover);
+				}
+			}
+			
+			
+			/* right side "points" */
+			li:not(:last-of-type) & {
+				--breadcrumb-padding-right: calc( var(--breadcrumb-padding-inline) + (var(--edge-offset) / 1.5) );
+				
+				corner-top-right-shape: bevel;
+				corner-bottom-right-shape: bevel;
+				border-top-right-radius: var(--edge-offset) 50%;
+				border-bottom-right-radius: var(--edge-offset) 50%;				
+			}
+
+			
+			/* left side "fins" */
+			li:not(:first-of-type) & {
+				clip-path: polygon(
+					100% 0, 
+					100% 100%, 
+					0% 100%, 
+					var(--edge-offset) 50%, 
+					0% 0%
+				);	
+			}
+		}		
+	}
+}
+
+
+
+/* demo setup - can ignore */
+:root {
+	--primary--h: 										180;
+	--primary--s: 										40%;
+	--primary--l: 										36%;
+								
+	--primary: 												var(--primary--h) var(--primary--s) var(--primary--l);
+								
+	--primary-light: 									from hsl(var(--primary)) h calc(s - 10) calc(l + 15);
+	--primary-lighter: 								from hsl(var(--primary)) h calc(s - 05) calc(l + 30);
+	--primary-lightest: 							from hsl(var(--primary)) h calc(s - 05) calc(l + 40);
+								
+	--primary-dark: 									from hsl(var(--primary)) h calc(s + 10) calc(l - 10);
+	--primary-darker: 								from hsl(var(--primary)) h calc(s + 05) calc(l - 20);
+	--primary-darkest: 								from hsl(var(--primary)) h calc(s - 10) calc(l - 30);
+	
+	
+	--crumb-inactive-bg: 							color-mix( in oklab, hsl(var(--primary-dark)), hsl(var(--primary-darker)) );
+	--crumb-inactive-fg: 							color-mix( in oklab, hsl(var(--primary-lightest)), white 15% );
+	--crumb-inactive-bg--hover: 			hsl(var(--primary-dark));
+	--crumb-inactive-fg--hover: 			white;
+	
+	--crumb-active-bg: 								hsl(var(--primary-lightest));
+	--crumb-active-fg: 								hsl(var(--primary-darker));
+	--crumb-active-bg--hover: 				color-mix( in oklab, hsl(var(--primary-lightest)), white 25% );
+	--crumb-active-fg--hover: 				hsl(var(--primary-darkest));
+	
+	--crumb-bg: 											var(--crumb-inactive-bg);
+	--crumb-fg: 											var(--crumb-inactive-fg);
+	
+	
+	background: color-mix( in oklab, hsl(var(--primary-darker)), hsl(var(--primary-darkest)) );	
+	container: html / inline-size;		
+	interpolate-size: allow-keywords;	
+}
+
+@font-face {
+	font-family: "Libre Franklin";
+	src: url("https://assets.codepen.io/2392/LibreFranklin.ttf");
+	font-style: normal;
+	font-weight: 100 900;
+}
+
+* {
+	text-box: trim-both cap alphabetic;
+}
+
+.anim-container {	
+/* 	background: red; */
+	display: flex;
+	height: inherit;
+	
+	padding-block: 30cqh;
+	padding-inline: 8dvw;
+	
+/* 	contain: anim-container / inline-size;	 */
+	
+/* 	animation-name: width-change;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;
+	animation-direction: alternate;
+	
+	will-change: width; */
+}
+
+body { 	
+	color: hsl(var(--primary-lighter));
+	display: grid;
+	align-content: start;
+/* 	gap: 4rem; */
+/* 	place-content: center; */
+	
+	font-family: "Libre Franklin", sans-serif;	
+	margin: 0;
+	
+	box-sizing: border-box;
+	height: 100cqh;
+	overflow: hidden;
+}
+
+ol, ul {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: inherit;
+}
+
+@keyframes width-change {
+  to {
+    width: 20dvw;
+  }
+}
 
 /* Responsive layouts */
 @media (max-width: 720px) {
@@ -721,6 +991,12 @@ input {
     .content {
         width: calc(100% - var(--sidebar-compact-width));
         margin-left: var(--sidebar-compact-width);
+    }
+
+    .admin-breadcrumbs {
+        width: calc(100% - 32px);
+        margin-top: 12px;
+        padding: 11px 13px;
     }
 
     .customer-page {

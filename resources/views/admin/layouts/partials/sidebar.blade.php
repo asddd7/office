@@ -4,10 +4,10 @@
         <span class="logo-full">SFA - ADMIN</span>
     </div>
     <div class="sidebar-section">MENU UTAMA</div>
-    <a href="{{ route('dashboard') }}" @class(['active' => request()->routeIs('dashboard')])>
+    <a href="{{ route('admin.dashboard') }}" @class(['active' => request()->routeIs('admin.dashboard')])>
         <i class="fa-solid fa-house"></i><span>Dashboard</span>
     </a>
-    <a href="{{ route('admin.customer.index') }}" @class(['active' => request()->routeIs('admin.customer.index')])>
+    <a href="{{ route('admin.customer.index') }}" @class(['active' => request()->routeIs('admin.customer.*')])>
         <i class="fa-solid fa-users"></i><span>Data Pelanggan</span>
     </a>
 </aside>
