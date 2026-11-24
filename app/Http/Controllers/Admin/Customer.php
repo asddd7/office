@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Customer as ModelsCustomer;
+use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class Customer extends Controller
@@ -11,9 +13,12 @@ class Customer extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request): View
     {
-        $customers = ModelsCustomer::all();
+        $customers = DB::table('customer')
+            ->join('customer_category', 'customer.category_id', '=', 'customer_category.id')
+            ->select('customer.*', 'customer_category.name as category_name')
+            ->get();
         return view('admin.customer.index', compact('customers'));
     }
 
